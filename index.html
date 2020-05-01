@@ -1,0 +1,102 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARMS</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"
+        integrity="sha256-Pg1di+fBF53Rbh9oZR/FeD1xsFzTLC963lcac1D0ias=" crossorigin="anonymous"></script>
+
+    <style>
+        body,
+        main {
+            padding: 0;
+            margin: 0;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 50vw 50vw;
+            grid-template-rows: 50vh 50vh;
+        }
+
+        #left {
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 2;
+            background-color: aqua;
+            padding: 1rem;
+        }
+
+        #upperright {
+            grid-column: 2 / span 1;
+            grid-row: 1 / span 1;
+            background-color: coral;
+        }
+
+        #lowerright {
+            position: relative;
+            grid-column: 2 / span 1;
+            grid-row: 2 / span 1;
+            background-color: chartreuse;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main>
+        <div id="left" contenteditable="true">
+            <!-- Input Code -->
+        </div>
+        <div id="upperright">
+            <!-- Current View (Top|Front|Right|Code) -->
+        </div>
+        <div id="lowerright"></div>
+    </main>
+
+    <script>
+
+        let editor = document.getElementById('left');
+        let display = document.getElementById('upperright');
+        editor.addEventListener('input', function () {
+            // Debounce
+            display.innerText += "test";
+        }, false);
+
+        var button;
+
+        let p5container = document.getElementById('lowerright');
+
+        function changeBG() {
+            camera();
+        }
+
+        setup = function () {
+            let canvas = createCanvas(p5container.offsetWidth - 1, p5container.offsetHeight - 1, WEBGL);
+            canvas.parent(p5container);
+            ortho();
+            button = createButton('Reset Camera');
+            button.parent(p5container);
+            button.position(0, 0);
+            button.mousePressed(changeBG);
+        }
+
+        draw = function () {
+            background(200);
+            orbitControl();
+
+            // push()
+            box(50);
+            // pop();
+
+            sphere(30);
+        }
+    </script>
+
+</body>
+
+</html>
