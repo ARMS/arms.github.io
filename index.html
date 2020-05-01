@@ -27,7 +27,6 @@
             grid-column: 1 / span 1;
             grid-row: 1 / span 2;
             background-color: aqua;
-            padding: 1rem;
         }
 
         #upperright {
@@ -40,7 +39,14 @@
             position: relative;
             grid-column: 2 / span 1;
             grid-row: 2 / span 1;
-            background-color: chartreuse;
+            background-color: #E1E1E1;
+        }
+
+        .text {
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            word-wrap: break-word;
+            white-space: pre-line;
         }
     </style>
 
@@ -49,12 +55,11 @@
 <body>
 
     <main>
-        <div id="left" contenteditable="true">
-            <!-- Input Code -->
+        <div id="left" class="text" contenteditable="true">box1 = Box {}
+            sphere1 = Sphere {}
+            Type more here...
         </div>
-        <div id="upperright">
-            <!-- Current View (Top|Front|Right|Code) -->
-        </div>
+        <div id="upperright" class="text">Output markdup here (e.g., SDF)</div>
         <div id="lowerright"></div>
     </main>
 
@@ -64,7 +69,7 @@
         let display = document.getElementById('upperright');
         editor.addEventListener('input', function () {
             // Debounce
-            display.innerText += "test";
+            display.innerText += " test";
         }, false);
 
         var button;
@@ -86,7 +91,7 @@
         }
 
         draw = function () {
-            background(200);
+            background(225);
             orbitControl();
 
             // push()
