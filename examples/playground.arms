@@ -1,0 +1,55 @@
+model "Example"
+-- global settings
+units = mm
+scale_visual = 10
+
+-- variables (initialization only, no assignment)
+x = 6 * 10
+name = "Arms"
+p = 1 0 0
+
+sphere1 = SpherePrimitive {
+    position = 0 0 0
+    quaternion = 1 0 0 x
+    scale = 1 1 1
+    color = #FFFFFF
+    parent = World
+    relative_parent = True
+}
+
+-- return last thing in block?
+Template Sphere() {
+    x = 1 -- scoped
+    SpherePrimitive {
+        position = x 0 0
+        quaternion = 1 0 0 x
+        color = #FFFFFF
+        parent = World
+    }
+}
+
+sphere2 = Sphere()
+
+sphere3 = Sphere() & position = 1 1 1 & color = Blue
+
+mesh1 = MeshPrimitive {
+    uri = some/path/to/a/resource/maybe/gltf/binary
+    position = p
+    quaternion = 1 0 0 0
+    color = White -- defined in prelude?
+    parent = sphere1
+}
+
+Template Mesh(uri) {
+    x = 1 -- scoped
+    MeshPrimitive {
+        uri = uri
+        position = x 0 0
+        quaternion = 1 0 0 x
+        color = #FFFFFF
+        parent = World
+    }
+}
+
+mesh2 = Mesh(/some/uri) & position = 2 2 2
+

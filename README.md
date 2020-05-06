@@ -1,6 +1,23 @@
-# arms.github.io
+# Robot markup, design, and simulation
 
-Robot markup, design, and simulation
+Steps:
+
+1. Write ARMS grammar
+  - Look at [the example here](examples/playground.arms)
+2. Write a lexer
+3. Write a parser (no expressions to start)
+4. Generate visual from AST
+
+Ideas:
+
+- position box on center? make configurable?
+- transformations (ODE or transformations.py)
+- separate visual from collision?
+- multiple visual or collision elements?
+- conditional and branching
+- loops
+- https://p5js.org/reference/#/p5/loadModel
+- includes
 
 ([original project](https://github.com/DillonFlohr/ARMS) and [report](https://compusciencing.github.io/report-arms.html))
 
@@ -24,6 +41,8 @@ Functionality:
 - transformations
   - ODE
   - transformations.py
+- load from url query parameter
+- save to local storage
 
 Code style:
 
@@ -64,3 +83,4 @@ p5js notes:
 
 - object
 - resize
+- model (obj or stl)
