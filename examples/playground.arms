@@ -1,14 +1,22 @@
-model "Example"
--- global settings
-units = mm
-scale_visual = 10
+example = Model {
+    units = mm
+}
 
 -- variables (initialization only, no assignment)
 x = 6 * 10
 name = "Arms"
 p = 1 0 0
 
-sphere1 = SpherePrimitive {
+sphere1 = Ellipsoid {
+    position = 0 0 0
+    quaternion = 1 0 0 x
+    scale = 1 1 1
+    color = #FFFFFF
+    parent = World
+    relative_parent = True
+}
+
+box1 = Cuboid {
     position = 0 0 0
     quaternion = 1 0 0 x
     scale = 1 1 1
@@ -20,7 +28,7 @@ sphere1 = SpherePrimitive {
 -- return last thing in block?
 Template Sphere() {
     x = 1 -- scoped
-    SpherePrimitive {
+    Ellipsoid {
         position = x 0 0
         quaternion = 1 0 0 x
         color = #FFFFFF
@@ -32,7 +40,7 @@ sphere2 = Sphere()
 
 sphere3 = Sphere() & position = 1 1 1 & color = Blue
 
-mesh1 = MeshPrimitive {
+mesh1 = Mesh {
     uri = some/path/to/a/resource/maybe/gltf/binary
     position = p
     quaternion = 1 0 0 0
@@ -42,7 +50,7 @@ mesh1 = MeshPrimitive {
 
 Template Mesh(uri) {
     x = 1 -- scoped
-    MeshPrimitive {
+    Mesh {
         uri = uri
         position = x 0 0
         quaternion = 1 0 0 x
@@ -53,3 +61,9 @@ Template Mesh(uri) {
 
 mesh2 = Mesh(/some/uri) & position = 2 2 2
 
+    `wheel-{name_suffix}` = Ellipsoid {
+        position = x 0 z
+        quaternion = Quaternion.identity
+        positioning = RELATIVE
+        parent = parent
+    }

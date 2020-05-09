@@ -1,0 +1,44 @@
+rover = Model {
+    units = CENTIMETERS
+    up_axis = YAXIS
+}
+
+wheel_base = 10
+track_width = 8
+chassis_height = 4
+
+wheel_radius = 3
+wheel_width = 1
+
+template WheelAndAxle(name, is_front, is_left, parent) {
+    x = is_front ? wheel_base / 2 : -wheel_base / 2
+    z = is_left ? -track_width / 2 : track_width / 2
+    `{name}` = Ellipsoid {
+        size = [wheel_radius wheel_radius wheel_width]
+        position = [x 0 z]
+        quaternion = IDENTITY
+        positioning = RELATIVE
+        parent = parent
+    }
+
+    joint_z = z + (is_left ? wheel_width : -wheel_width)
+    `{name}-axle` = Revolute {
+        axis = [0 0 1]
+        position = [x 0 joint_z]
+        parent = parent
+        child = `{name}`
+    }
+}
+
+chassis = Cuboid {
+    size = [wheel_base chassis_height track_width]
+    position = [0 wheel_radius 0]
+    quaternion = IDENTITY
+    positioning = ABSOLUTE
+    parent = NONE
+}
+
+WheelAndAxle(wheel_fl, TRUE, TRUE, chassis)
+WheelAndAxle(wheel_fr, TRUE, FALSE, chassis)
+WheelAndAxle(wheel_bl, FALSE, TRUE, chassis)
+WheelAndAxle(wheel_br, FALSE, FALSE, chassis)

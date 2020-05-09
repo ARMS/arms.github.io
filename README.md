@@ -3,7 +3,7 @@
 Steps:
 
 1. Write ARMS grammar
-  - Look at [the example here](examples/playground.arms)
+  1. Look at [the example here](examples/playground.arms)
 2. Write a lexer
 3. Write a parser (no expressions to start)
 4. Generate visual from AST
@@ -18,6 +18,8 @@ Ideas:
 - loops
 - https://p5js.org/reference/#/p5/loadModel
 - includes
+- transparency?
+- names in templates?
 
 ([original project](https://github.com/DillonFlohr/ARMS) and [report](https://compusciencing.github.io/report-arms.html))
 
@@ -58,9 +60,17 @@ Visualization options:
   - prettier, more complex for adding removing objects
 - resouces
   - [openjscad](https://openjscad.org/)
-  - [pixijs](https://www.pixijs.com/)
-  - [isomer](https://jdan.github.io/isomer/)
   - [How To Render 3d In 2d Canvas](https://www.basedesign.com/blog/how-to-render-3d-in-2d-canvas)
+- https://gist.github.com/dmnsgn/76878ba6903cf15789b712464875cfdc
+- https://math.gl/
+- https://www.babylonjs.com/
+
+Visualization needs:
+
+- 3d shapes
+- simple
+- isometric projection (not required, but nice)
+- loading 3d models (obj is fine, gltf would be better)
 
 Editing code options:
 

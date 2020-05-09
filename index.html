@@ -6,13 +6,14 @@
     <title>ARMS</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"
-        integrity="sha256-Pg1di+fBF53Rbh9oZR/FeD1xsFzTLC963lcac1D0ias=" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/mode/javascript/javascript.min.js"></script>
     <style>
+        html,
         body,
         main {
+            overflow: hidden;
             padding: 0;
             margin: 0;
         }
@@ -29,6 +30,11 @@
             background-color: aqua;
         }
 
+        /* #editor {
+            height: 100%;
+            width: 100%;
+        } */
+
         #upperright {
             grid-column: 2 / span 1;
             grid-row: 1 / span 1;
@@ -42,12 +48,16 @@
             background-color: #E1E1E1;
         }
 
-        .text {
+        /* .code {
             padding: 1rem;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Source Code Pro', monospace;
+            letter-spacing: normal;
             word-wrap: break-word;
             white-space: pre-line;
-        }
+            font-size: 14px;
+            line-height: 20px;
+            tab-size: 4;
+        } */
     </style>
 
 </head>
@@ -55,51 +65,22 @@
 <body>
 
     <main>
-        <div id="left" class="text" contenteditable="true">box1 = Box {}
-            sphere1 = Sphere {}
-            Type more here...
-        </div>
-        <div id="upperright" class="text">Output markdup here (e.g., SDF)</div>
+        <div id="left" class="code"></div>
+        <div id="upperright" class="code">Output markdup here (e.g., SDF)</div>
         <div id="lowerright"></div>
     </main>
 
-    <script>
+    <script type="module">
 
-        let editor = document.getElementById('left');
-        let display = document.getElementById('upperright');
-        editor.addEventListener('input', function () {
-            // Debounce
-            display.innerText += " test";
-        }, false);
+        const editorElement = document.getElementById('left');
 
-        var button;
+        const editor = CodeMirror(editorElement, {
+            value: "function myScript(){return 100;}\n",
+            mode: "javascript"
+        });
 
-        let p5container = document.getElementById('lowerright');
+        // Babylonjs
 
-        function changeBG() {
-            camera();
-        }
-
-        setup = function () {
-            let canvas = createCanvas(p5container.offsetWidth - 1, p5container.offsetHeight - 1, WEBGL);
-            canvas.parent(p5container);
-            ortho();
-            button = createButton('Reset Camera');
-            button.parent(p5container);
-            button.position(0, 0);
-            button.mousePressed(changeBG);
-        }
-
-        draw = function () {
-            background(255);
-            orbitControl();
-
-            // push()
-            box(50);
-            // pop();
-
-            sphere(30);
-        }
     </script>
 
 </body>
