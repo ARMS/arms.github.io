@@ -1,5 +1,7 @@
 rover = Model {
-    units = CENTIMETERS
+    length = CENTIMETERS
+    mass = KILOGRAMS
+    angle = DEGREES
     up_axis = YAXIS
 }
 
