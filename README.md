@@ -20,6 +20,7 @@ Ideas:
 - includes
 - transparency?
 - names in templates?
+- https://www.bottango.com/
 
 ([original project](https://github.com/DillonFlohr/ARMS) and [report](https://compusciencing.github.io/report-arms.html))
 
@@ -94,3 +95,15 @@ p5js notes:
 - object
 - resize
 - model (obj or stl)
+
+Math:
+
+- degrees <--> radians
+- rotation from axis and angle
+
+```bash
+# Develop
+parcel index.html
+
+# Deploy...
+```

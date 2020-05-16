@@ -1,0 +1,26 @@
+{
+  "name": "arms.github.io",
+  "version": "1.0.0",
+  "description": "Steps:",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARMS/arms.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ARMS/arms.github.io/issues"
+  },
+  "homepage": "https://github.com/ARMS/arms.github.io#readme",
+  "dependencies": {
+    "@codemirror/next": "^0.5.5"
+  }
+}

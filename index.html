@@ -6,9 +6,7 @@
     <title>ARMS</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/mode/javascript/javascript.min.js"></script>
+
     <style>
         html,
         body,
@@ -24,10 +22,10 @@
             grid-template-rows: 50vh 50vh;
         }
 
-        #left {
+        #editor {
             grid-column: 1 / span 1;
             grid-row: 1 / span 2;
-            background-color: aqua;
+            background-color: white;
         }
 
         /* #editor {
@@ -35,13 +33,13 @@
             width: 100%;
         } */
 
-        #upperright {
+        #output {
             grid-column: 2 / span 1;
             grid-row: 1 / span 1;
             background-color: coral;
         }
 
-        #lowerright {
+        #visual {
             position: relative;
             grid-column: 2 / span 1;
             grid-row: 2 / span 1;
@@ -65,23 +63,12 @@
 <body>
 
     <main>
-        <div id="left" class="code"></div>
-        <div id="upperright" class="code">Output markdup here (e.g., SDF)</div>
-        <div id="lowerright"></div>
+        <div id="editor"></div>
+        <div id="output">Output markdup here (e.g., SDF)</div>
+        <div id="visual"></div>
     </main>
 
-    <script type="module">
-
-        const editorElement = document.getElementById('left');
-
-        const editor = CodeMirror(editorElement, {
-            value: "function myScript(){return 100;}\n",
-            mode: "arms"
-        });
-
-        // Babylonjs
-
-    </script>
+    <script src="./index.js"></script>
 
 </body>
 

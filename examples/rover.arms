@@ -16,25 +16,25 @@ template WheelAndAxle(name, is_front, is_left, parent) {
     x = is_front ? wheel_base / 2 : -wheel_base / 2
     z = is_left ? -track_width / 2 : track_width / 2
     `{name}` = Ellipsoid {
-        size = [wheel_radius wheel_radius wheel_width]
-        position = [x 0 z]
+        size = [wheel_radius, wheel_radius, wheel_width]
+        position = [x, 0, z]
         quaternion = IDENTITY
         positioning = RELATIVE
         parent = parent
     }
 
     joint_z = z + (is_left ? wheel_width : -wheel_width)
-    `{name}-axle` = Revolute {
-        axis = [0 0 1]
-        position = [x 0 joint_z]
+    `{name}_axle` = Revolute {
+        axis = [0, 0, 1]
+        position = [x, 0, joint_z]
         parent = parent
         child = `{name}`
     }
 }
 
 chassis = Cuboid {
-    size = [wheel_base chassis_height track_width]
-    position = [0 wheel_radius 0]
+    size = [wheel_base, chassis_height, track_width]
+    position = [0, wheel_radius, 0]
     quaternion = IDENTITY
     positioning = ABSOLUTE
     parent = NONE

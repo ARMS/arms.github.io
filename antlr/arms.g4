@@ -22,8 +22,8 @@ math:
 	NUMBER										# Number
 	| '-'? NAME									# Name
 	| STRING									# String
-	| '[' math math math ']'					# Vector3
-	| '[' math math math math ']'				# Vector4
+	| '[' math ',' math ',' math ']'			# Vector3
+	| '[' math ',' math ',' math ',' math ']'	# Vector4
 	| '(' inner = expression ')'				# Parentheses
 	| left = math operator = '^' right = math	# Power
 	| left = math operator = '*' right = math	# Multiplication
@@ -48,8 +48,8 @@ PRIMITIVE:
 MODEL	: 'Model';
 UNITS	: 'mm' | 'cm' | 'm' | 'in' | 'ft';
 
-INTERP_NAME	: '`' (~'`' | '\\`')* '`';
-NAME		: [a-zA-Z]+ [a-zA-Z0-9_]*;
+INTERP_NAME	: '`' [a-zA-Z{]+ [a-zA-Z0-9_{}]* '`';
+NAME		: [a-zA-Z] [a-zA-Z0-9_]*;
 
 STRING : '"' (~'"' | '\\"')* '"';
 
