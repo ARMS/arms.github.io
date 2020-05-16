@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/ARMS/arms.github.io#readme",
   "dependencies": {
-    "@codemirror/next": "^0.5.5"
+    "@codemirror/next": "^0.6.0"
   }
 }

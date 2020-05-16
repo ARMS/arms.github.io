@@ -35,7 +35,7 @@ export const armsSyntax = new LezerSyntax(parser.withProps(
         PropertyName: "propertyName definition",
         VariableDefinition: "variableName definition",
         // VariableName: "variableName",
-        TemplateName: "string",
+        TemplateName: "className definition",
         // ParameterName: "labelName",
         // InvokeName: "className",
         InterpName: "string",
